@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'INSECURE')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True  # if os.environ.get('DEBUG') == '1' else False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', "mauricio8989.pythonanywhere.com",]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', "Lipe.pythonanywhere.com",]
 
 
 # Application definition
@@ -82,22 +82,21 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
+#    }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'Filipe081$default',
-#         'USER': 'Filipe081',
-#         'PASSWORD': 'Filipe0819$default',
-#         'HOST': 'Filipe081.mysql.pythonanywhere-services.com',
-#         'PORT': '3306',
-#     }
-# }
+     'default': {
+         'ENGINE': 'django.db.backends.mysql',
+         'NAME': 'Lipe$default',
+         'USER': 'Lipe',
+         'PASSWORD': '991285279f',
+         'HOST': 'Lipe.mysql.pythonanywhere-services.com',
+         'PORT': '3306',
+     }
+ }
 
 
 # Password validation
