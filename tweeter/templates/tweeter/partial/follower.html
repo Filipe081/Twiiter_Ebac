@@ -1,0 +1,15 @@
+<div class="follower">
+    <a href="{% url 'user:user_profile' user.id %}">
+        <div class='user-data'>
+            {% if user.profile.image %}
+                <img src="{{ user.profile.image.url }}" alt="Foto de perfil" class="profile-image">
+            {% else %}
+                <img src="https://i.ibb.co/XJpQZgB/user.png" alt="Foto de perfil padrão" class="profile-image">
+            {% endif %}
+            <div class='user-to-follow'>
+                <p>{{user}}</p>
+                <span>@{{user.username}}</span>
+            </div>
+        </div>
+    </a>
+</div>

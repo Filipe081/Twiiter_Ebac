@@ -1,0 +1,677 @@
+:root {
+  --color-primary: #269fe6;
+  --color-primary-dark-light:rgba(1,41,55,5);
+  --color-primary-hover: #2086c2;
+  --color-primary-dark: #2b35a5;
+  --color-primary-dark-hover: #4d5491;
+  --color-primary-light: #d4ecfa;
+  --color-primary-light-hover: #bdd8e7;
+  --color-white: #fff;
+  --color-black: #000;  
+  --color-dark-text: #444;
+  --color-info-light: #cce5ff;
+  --color-debug-light: #cce5ff;
+  --color-success-light: #d4edda;
+  --color-alert-light: #fff3cd;
+  --color-warning-light: #fff3cd;
+  --color-error-light: #f8d7da;
+  --color-info-dark: #4d86c4;
+  --color-debug-dark: #4d86c4;
+  --color-success-dark: #4a9c5d;
+  --color-alert-dark: #927f40;
+  --color-warning-dark: #927f40;
+  --color-error-dark: #da525d;
+  --color-gray-0: #f9f9f9;
+  --color-gray-1: #e0e0e0;
+  --color-gray-2: #c7c7c7;
+  --color-gray-3: #aeaeae;
+  --color-gray-4: #959595;
+  --color-gray-5: #7d7d7d;
+  --color-gray-6: #646464;
+  --color-gray-7: #4b4b4b;
+  --color-gray-8: #323232;
+  --color-gray-9: #191919;
+  --spacing-gutter-medium: 3.6rem;
+  --spacing-gutter-large: 4rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-y: scroll;
+  overflow-y: scroll; /* Permite o scroll vertical */
+  scrollbar-width: none; /* Remove a barra de scroll no Firefox */
+  -ms-overflow-style: none; /* Remove a barra de scroll no Internet Explorer */
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: "Roboto", sans-serif;
+  overflow: auto;
+  background-color: var(--color-primary-dark);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: var(--spacing-gutter-medium);
+}
+
+ul {
+  list-style: none;
+}
+
+.profile .profile-info{
+  margin: auto;
+  text-align: center;
+}
+
+.bio h3{
+  margin: 0;
+}
+.bio{
+  display: none;
+}
+
+.profile .profile-info .profile-image{
+  width: 16.4rem;
+  height: 16.4rem;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.form-container {
+  max-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--color-primary-dark);
+  overflow-y: auto;
+}
+
+.form {
+  width: 50rem;
+  padding: 2rem;
+  /*background-color: var(--color-debug-dark);*/
+  border-radius: 0.5rem;
+  /*box-shadow: 0 0 1.5rem var(--color-primary);*/
+  color: var(--color-white);
+  margin: 0 0 3rem 0;
+}
+
+.profile .form{
+  box-shadow: none;
+  margin: 0 auto;
+}
+
+.form > h1 {
+  margin-bottom: 3rem;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  color: var(--color-white);
+  gap: var(--spacing-gutter-medium);
+}
+
+.form-group {
+  margin: 0.5rem 0 3rem 0;
+}
+
+.errorlist {
+  color: var(--color-error-dark);
+  font-size: 1.4rem;
+}
+
+.form-content-grid{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form input {
+  padding: 1rem;
+  width: 100%;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: var(--color-primary-light);
+  color: #15202b;
+  border: 0.2rem solid var(--color-gray);
+  font-size: 1.6rem;
+  margin-top: 0.5rem;
+}
+input[type="hidden"],
+input[type="checkbox"]{
+  display: none;
+}
+
+input[type="password"]{
+  font-size: 20px;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 1rem var(--color-primary);
+}
+
+.form button {
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  background-color: var(--color-primary);
+  color: #fefeff;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.form button:hover {
+  box-shadow: 0 0 0.5rem var(--color-primary);
+  transition: background-color 0.3s ease-in-out;
+}
+.tweet-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  box-shadow: none;
+  margin-bottom: var(--spacing-gutter-large);
+  padding: 2rem 0;
+}
+.tweet-form button {
+  width: fit-content;
+  padding: 1rem 2rem;
+  background-color: var(--color-primary);
+  color: #fefeff;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 1.6rem;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+}
+.tweet-form button:hover{
+  background-color: var(--color-debug-dark);
+}
+.tweet-form textarea{
+  resize: vertical;
+  padding: 1rem;
+  width: 100%;
+  border: 2px solid var(--color-gray-2);
+  border-radius: 0.5rem;
+  background-color: transparent;
+  color: var(--color-primary-light);
+  font-size: 1.6rem;
+  resize: none;
+  transition: all 0.3s ease;
+  margin: 0;
+}
+
+.tweet-form textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 1rem var(--color-primary);
+}
+#comment-form{
+  display: flex;
+  gap: 0;
+  margin: 0;
+  padding-bottom: 0;
+}
+
+#comment-form button{
+  margin: 0;
+  font-size: 1.4rem;
+  padding: 1rem;
+}
+.comment-input{
+  margin-bottom: 1rem;
+}
+
+.comment{
+  margin-top: 2rem;
+  background-color: var(--color-primary-dark-hover);
+  border-radius: .8rem;
+  padding: 1rem;
+}
+
+.comment .description{
+  padding: 1rem 0 0 2rem;
+}
+
+.grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+a {
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-primary);
+}
+
+.container {
+  max-width: 134rem;
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1.5fr;
+  gap: 0.1rem;
+  background-color: var(--color-primary);
+}
+
+.tweeter-logo{
+  margin: 0;
+  width: fit-content;
+}
+
+.tweeter-logo i{
+  font-size: 5rem;
+}
+
+.left,
+.main,
+.right,
+.profile {
+  max-height: 100vh;
+  height: 100%;
+  background-color: var(--color-primary-dark);
+  padding: 2rem;
+  color: #ffff;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.profile{
+  overflow: auto;
+}
+
+.my-tweets{
+  margin-top: 2rem;
+}
+
+.left .profile-image-home{
+  max-width: 4.8rem;
+  height: 4.8rem;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+
+.navbar .nav {
+  display: flex;
+  flex-direction: column;
+}
+.navbar .nav .nav-item {
+  margin-top: var(--spacing-gutter-medium);
+}
+.navbar .nav .nav-item .url {
+  color: var(--color-white);
+  text-decoration: none;
+  display: flex;
+  gap: 1.8rem;
+  transition: all 0.2s ease-in-out;
+  background-color: transparent;
+  border:  none;
+}
+.navbar .nav .nav-item .url:hover {
+  color: var(--color-primary);
+}
+
+.item-description,
+.ph {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+
+.main {
+  padding: 2rem 4rem;
+  overflow: auto;
+}
+.tweet {
+  width: 100%;
+  max-height: 90vh;
+  height: auto;
+  background-color:var(--color-primary-dark-light);
+  padding: 2rem;
+  border-radius: 2rem;
+  margin-bottom: var(--spacing-gutter-medium);
+  position: relative;
+}
+
+.tweet .information {
+  display: flex;
+  gap: 1.8rem;
+  align-items: center;
+}
+
+.tweet .information img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.tweet.information.user-information h3 {
+  margin: 0;
+}
+
+.tweet .information div {
+  display: flex;
+  flex-direction: column;
+}
+
+.tweet .information div h3 {
+  display: inline;
+  margin: 0;
+}
+
+.tweet .tweet-actions-interact{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1.5rem;
+}
+
+.tweet .tweet-actions-interact i{
+  color: var(--color-gray-3);
+}
+
+.liked {
+  color: var(--color-error-dark) !important;
+}
+
+.tweet .tweet-actions-interact .like:hover {
+  color: var(--color-error-dark);
+}
+
+.tweet .tweet-actions-interact .comments:hover {
+  color: var(--color-success-dark);
+}
+
+.tweet .tweet-actions-interact .share:hover {
+  color: var(--color-info-dark);
+}
+
+.trash, .edit{
+  text-decoration: none;
+  color: var(--color-white);
+  background-color: transparent;
+  border: none;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.edit:hover {
+  color: var(--color-primary);
+}
+.trash:hover {
+  color: var(--color-error-dark);
+}
+
+.tweet-actions{
+  display: flex;
+  gap: 2rem;
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+}
+span{
+  display: inline;
+}
+
+.description {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-gutter-medium);
+  padding: 2rem var(--spacing-gutter-large);
+  padding-bottom: 0;
+}
+.description p {
+  max-width: 100%;
+  line-height: 2.4rem;
+  letter-spacing: 0.1rem;
+  word-wrap: break-word; /* Permite quebrar palavras longas */
+  word-break: break-word; /* Garante a quebra de palavras maiores */
+  white-space: normal; /* Ajusta para quebrar linhas automaticamente */
+  overflow-wrap: break-word; /* Similar ao word-wrap */
+
+}
+
+.followers {
+  width: 34.3rem;
+  background-color: var(--color-primary);
+  padding: 1rem;
+  border-radius: 1rem;
+  color: var(--color-dark-text)
+  
+}
+
+
+.followers ul{
+  max-height: 88vh;
+}
+
+.followers ul li {
+  display: flex;
+  width: 100%;
+  padding: 1rem;
+  border-bottom: 0.1rem solid var(--color-gray);
+}
+
+.follower {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.follower img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.follower .user-to-follow {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.2rem;
+}
+span {
+  color: var(--color-gray);
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.follower .user-data{
+  display: flex;
+  gap: .5rem;
+}
+
+.follow,
+.unfollow{
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 0.1rem solid var(--color-primary);
+  border-radius: 2.4rem;
+  cursor: pointer;
+  transition: all 0.1s linear;
+  padding: 1rem 2rem;
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+}
+.follow:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+.unfollow:hover {
+  background-color: var(--color-error-dark);
+  color: var(--color-white);
+  border: 0.1rem solid var(--color-error-dark);
+}
+
+/* Messages */
+.messages-container {
+  display: flex;
+  flex-flow: column wrap;
+  gap: calc(var(--spacing-gutter-medium) / 2);
+}
+
+.errorlist {
+  font-size: 1.2rem;
+  padding: 0;
+  margin: 0;
+}
+
+.message {
+  padding: 1rem;
+  border-radius: 4px;
+  border: 1px solid var(--color-dark-text);
+  background: var(--color-gray-2);
+  color: var(--color-dark-text);
+}
+
+.message-error {
+  border: 1px solid var(--color-error-dark);
+  background: var(--color-error-light);
+  color: var(--color-error-dark);
+}
+
+.message-success {
+  border: 1px solid var(--color-success-dark);
+  background: var(--color-success-light);
+  color: var(--color-success-dark);
+}
+
+.message-warning {
+  border: 1px solid var(--color-warning-dark);
+  background: var(--color-warning-light);
+  color: var(--color-warning-dark);
+}
+
+.message-info {
+  border: 1px solid var(--color-info-dark);
+  background: var(--color-info-light);
+  color: var(--color-info-dark);
+}
+
+.message-debug {
+  border: 1px solid var(--color-debug-dark);
+  background: var(--color-debug-light);
+  color: var(--color-debug-dark);
+}
+
+.pagination {
+  background-color: transparent;
+}
+
+.container .pagination-content {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex: auto;
+  gap: 1rem 0.5rem;
+  background-color: transparent;
+}
+.pagination .page-item {
+  background: var(--color-gray-3);
+  padding: 0.5rem 1rem;
+}
+
+.pagination .page-link {
+  text-decoration: none;
+  background: var(--color-gray-7);
+  color: var(--color-white);
+}
+
+.pagination .page-current {
+  background: var(--color-primary);
+}
+
+.textarea-input{
+  margin: 0;
+}
+
+.tweet-button{
+  margin-top: 1rem;
+}
+
+@media (max-width: 1124px) {
+  .container {
+    max-width: 100vw;
+    width: 100%;
+    grid-template-columns: 1fr 3fr;
+  }
+  .right{
+    display: none;
+
+  }
+  .follow,
+  .unfollow{
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border: 0.1rem solid var(--color-primary);
+    border-radius: 2.4rem;
+    cursor: pointer;
+    transition: all 0.1s linear;
+    padding: 1rem 2rem;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+  }
+  .bio{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+  }
+}
+@media (max-width: 824px) {
+  .left{
+    width: fit-content;
+  }li
+  .item-description{
+    display: none !important;
+  }
+  .tweeter-logo i{
+    font-size: 3rem;
+  }
+  .container {
+    max-width: 100vw;
+    width: 100%;
+    grid-template-columns: auto 4fr;
+  }
+  .main{
+    padding: 1rem;
+  }
+  .form-container{
+    padding: 0 ;
+  }
+  .form{
+    background-color: transparent;
+    max-width: 100%;
+    box-shadow: none;
+  }
+}

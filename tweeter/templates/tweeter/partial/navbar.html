@@ -1,0 +1,33 @@
+<div class="navbar">
+    <ul class="nav">
+        <li class="nav-item">
+            <a class="url" href="{% url 'tweeter:home' %}">
+                <i class="ph ph-house-line"></i>
+                <span class="item-description">Início</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="url" href="{% url 'tweeter:home' %}">
+                <i class="ph ph-chat-circle-dots"></i>
+                <span class="item-description">Mensagens</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="url" href="{% url 'tweeter:home' %}">
+                <i class="ph ph-user"></i>
+                <span class="item-description">Perfil</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <form class="inline-form" action="{% url 'user:logout' %}" method='POST'>
+                {% csrf_token %}
+                <input type="hidden" name="username" value="{{ request.user.username }}">
+                <button class="url" type="submit">
+                    <i class="ph ph-sign-out"></i>
+                    <span class="item-description">Sair</span>
+                </button>
+            </form>
+        </li>
+    </ul>
+</div>

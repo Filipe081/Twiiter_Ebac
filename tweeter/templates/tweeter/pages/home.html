@@ -1,0 +1,43 @@
+{% extends "global/base.html" %}
+{% block title %}Home | {% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div class="left">
+        <a href="{% url 'user:user_profile' user.id %}">
+            {% if user.profile.image %}
+                <img class="profile-image-home" src="{{ user.profile.image.url }}" alt="Foto de perfil" class="profile-image">
+                {% else %}
+                    <img class="profile-image-home" src="https://i.ibb.co/XJpQZgB/user.png" alt="Foto de perfil padrão" class="profile-image">
+            {% endif %}        
+        </a>
+        {% include "tweeter/partial/navbar.html" %}
+    </div>
+    <main class="main">
+        <h2>Início</h2>
+        {% include "user/partial/messages.html" %}
+        <form class="tweet-form .form" method="POST" action="{% url "tweeter:create_tweet" %}">
+            {% csrf_token %}
+            {% for field in form%}
+                <div class="form-group {{ field.field.widget.attrs.class }}">
+                    {{ field }}
+                    {{ field.errors }}
+                </div>
+            {% endfor %}
+            <button class='tweet-button' type="submit">Postar</button>
+        </form>
+        {% if tweets %}
+            {% for tweet in tweets %}
+                {% include "tweeter/partial/tweet.html" %}
+            {% endfor %}
+            {% else %}
+                <h2>Nenhum tweet encontrado.</h2>
+        {% endif %}
+        {% include "tweeter/partial/paginator.html" %}
+    </main>
+    <div class="right">
+        <h2>Seguidores</h2>
+        {% include "tweeter/partial/right.html" %}
+    </div>
+</div>
+{% endblock content %}

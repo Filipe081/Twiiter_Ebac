@@ -1,0 +1,14 @@
+<div class="followers">
+    <h2>Seguindo: {{ user.profile.followers.count }}</h2>
+    <h2>Seguidores: {{ user.following.count }}</h2>
+    <ul>
+        <li><h4>Quem seguir</h2></li>
+        {% for user in users %}
+            {% if user.id != request.user.id %}
+                <li>
+                    {% include "tweeter/partial/follower.html" %}
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>

@@ -1,0 +1,13 @@
+<div class="tweet">
+    <div class="information">
+        <img class="user-image" src="https://via.placeholder.com/50" alt="tweet.user.username">
+        <div>
+            <h3>{{tweet.user}} {{tweet.user.last_name}}</h3>
+            <span>@{{tweet.user.username}}</span>
+            <span>{{tweet.created_at|date:"d/m/Y"}} às {{tweet.created_at|date:"H:i"}}</span>
+        </div>
+    </div>
+    <div class="description">
+        <p>{{tweet.content}}</p>
+    </div>
+</div>

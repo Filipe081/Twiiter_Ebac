@@ -1,0 +1,97 @@
+{% extends "global/base.html" %}
+{% load static %}
+{% load user_filters %}
+{% block title %}Home | {% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div class="left">
+        <h1 class=" tweeter-logo">
+            <a href="{% url 'tweeter:home' %}">
+                <i class="ph ph-twitter-logo"></i>
+            </a>
+        </h1>
+        {% include "tweeter/partial/navbar.html" %}
+    </div>
+    <main class="profile">
+        <h2>Profile</h2>
+        <div class="profile-info">
+            {% if user.profile.image %}
+                <img src="{{ user.profile.image.url }}" alt="Foto de perfil" class="profile-image">
+            {% else %}
+                <img src="https://i.ibb.co/XJpQZgB/user.png" alt="Foto de perfil padrão" class="profile-image">
+            {% endif %}
+            <div>
+                <h2>
+                    {{user.first_name}} {{user.last_name}}
+                    <p><span>@{{user.username}}</span></p>
+                </h2>    
+            </div>
+            <div class="bio">
+                <h3>Followers  {{ user.profile.followers.count }}</h3>
+                <h3>Following  {{ user.profile.followers.count }}</h3>
+            </div>
+        </div>
+        {% if not is_self %}
+            <div>
+                <form action="{% url 'user:toggle_follow' user.id %}" method="POST">
+                    {% csrf_token %}
+                    {% if request.user.profile|is_following:user %}
+                        <button class="unfollow" type="submit">Unfollow</button>
+                        {% else %}
+                            <button class="follow" type="submit">Follow</button>
+                    {% endif %}
+                </form>
+            </div>
+        {% endif %}
+
+        {% if is_self %}
+            <form class="form" method='POST' enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-content">
+                    {% for field in u_form %}
+                        <div class="form-group">
+                            <label for="{{ field.id_for_label }}">{{field.label}}</label>
+                            {{ field }}
+                            {{ field.errors }}
+                        </div>
+                    {% endfor %}
+                    {% for field in p_form %}
+                        <div class="form-group">
+                            <label for="{{ field.id_for_label }}">{{field.label}}</label>
+                            {{ field }}
+                            {{ field.errors }}
+                        </div>
+                    {% endfor %}
+                </div>
+        
+                {% if form.errors %}
+                    <div class="form-content">
+                    <div class="form-group">
+                        <div class="message message-error">
+                        There are errors in the form, please fix them and send again.
+                        </div>
+                    </div>
+                    </div>
+                {% endif %}
+        
+                <div class="form-content form-content-grid">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                </div>
+            </form>
+
+        {% endif %}
+            <div class="my-tweets">
+                {% for tweet in tweets %}
+                    {% include "tweeter/partial/tweet.html" %}
+                {% endfor %}
+            </div>                
+    </main>
+    <div class="right">
+        <h2>Followers</h2>
+        {% include "tweeter/partial/right.html" %}
+    </div>
+</div>
+{% endblock content %}

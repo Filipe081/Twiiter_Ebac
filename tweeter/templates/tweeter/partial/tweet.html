@@ -1,0 +1,73 @@
+<div class="tweet">
+    <div class="information">
+        <a class="information" href="{% url 'user:user_profile' tweet.user.id %}">
+            {% if tweet.user.profile.image %}
+                <img src="{{ tweet.user.profile.image.url }}" alt="{{user}}" class="profile-image">
+            {% else %}
+                <img src="https://i.ibb.co/XJpQZgB/user.png" alt="Foto de perfil padrão" class="profile-image">
+            {% endif %}
+            <div>
+                <h3>{{tweet.user.first_name}} {{tweet.user.last_name}}</h3>
+                <div>
+                    <span>@{{tweet.user.username}} {{tweet.created_at|date:"d/m"}} às {{tweet.created_at|date:"H:i"}} </span>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="description">
+        <p>{{tweet.content}}</p>
+    </div>
+    {% if request.user == tweet.user %}
+        <form class="form-delete" action="{% url 'tweeter:tweet_delete'%}" method='POST'>
+            {% csrf_token %}
+            <div class="tweet-actions">
+                <a class="edit" href="{% url 'tweeter:tweet_edit' tweet.id %}">
+                    <i class="ph ph-pencil-simple-line"></i>
+                </a>
+                <input type="hidden" name="id" value="{{ tweet.id }}">
+                <button type="submit" class="trash"><i class="ph ph-trash"></i></button>
+            </div>
+        </form>
+    {% endif %}
+    <div class="tweet-actions-interact">
+        <div>
+             <a href="{% url 'tweeter:like_tweet' tweet.id %}">
+                {% if user.is_authenticated %}
+                    {% if tweet in user.liked_tweets.all %}
+                        <i class="liked ph ph-heartbeat"></i>
+                    {% else %}
+                        <i class="like ph ph-heart"></i>
+                    {% endif %}
+                {% endif %}
+            </a>
+            <span class="likes">{{ tweet.likes.count }}</span>
+        </div>
+        <div>
+            <i class="comments ph ph-chat-circle-dots"></i>
+            <span class="comments">{{ tweet.comments.count}}</span>
+        </div>
+         <div>
+            <a href="{% url 'tweeter:comment_tweet' tweet.id %}">
+                 <i class="share ph ph-share-fat"></i>
+            </a>
+            <span class="share">0</span>
+         </div>
+     </div>
+     <div>
+         <form class="tweet-form .form" id="comment-form" method="POST" action="{% url "tweeter:comment_tweet" tweet.id %}">
+            {% csrf_token %}
+            {% for field in comment_form%}
+                <div class="form-group {{ field.field.widget.attrs.class }}">
+                    {{ field }}
+                    {{ field.errors }}
+                </div>
+            {% endfor %}
+            <button class='tweet-button' type="submit">Comentar</button>
+        </form>
+    </div>
+    <div class="comments-content">
+        {% for comment in tweet.comments.all %}
+             {% include "tweeter/partial/comment.html" %}
+        {% endfor %}
+    </div>
+</div>

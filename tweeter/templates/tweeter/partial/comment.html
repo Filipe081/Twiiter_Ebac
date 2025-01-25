@@ -1,0 +1,27 @@
+<div class="comment">
+    <div class="information">
+        {% comment %} {% if comment.image %}
+            <img class="profile-image-home" src="{{ comment.autor.image.url }}" alt="Foto de perfil" class="profile-image">
+            {% else %}
+                <img class="profile-image-home" src="https://i.ibb.co/XJpQZgB/user.png" alt="Foto de perfil padrão" class="profile-image">
+        {% endif %} {% endcomment %}
+        <a href="{% url 'user:user_profile' user.id %}">
+            <div class='user-data'>
+                {% if comment.autor.image %}
+                    <img src="{{ comment.autor.image.url }}" alt="Foto de perfil" class="profile-image">
+                {% else %}
+                    <img src="https://i.ibb.co/XJpQZgB/user.png" alt="Foto de perfil padrão" class="profile-image">
+                {% endif %}
+            </div>
+        </a>
+        <div>
+            <h3>{{comment.autor.user.first_name}} {{comment.autor.user.last_name}}</h3>
+            <div>
+                <span>{{comment.created_at|date:"d/m"}} às {{comment.created_at|date:"H:i"}} </span>
+            </div>
+        </div>
+    </div>
+    <div class="description">
+        <p>{{comment.content}}</p>
+    </div>
+</div>

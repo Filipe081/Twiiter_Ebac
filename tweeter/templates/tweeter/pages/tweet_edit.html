@@ -1,0 +1,30 @@
+{% extends "global/base.html" %}
+{% block title %}Home | {% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div class="left">
+        <h1>Tweeter</h1>
+        {% include "tweeter/partial/navbar.html" %}
+    </div>
+    <main class="main">
+        <h2>Edit</h2>
+        {% include "user/partial/messages.html" %}
+        {% include "global/base.html" %}
+        <form class="tweet-form .form" method="POST" action="{% url "tweeter:tweet_edit" tweet.id %}">
+            {% csrf_token %}
+            {% for field in form%}
+                <div class="form-group {{ field.field.widget.attrs.class }}">
+                    {{ field }}
+                    {{ field.errors }}
+                </div>
+            {% endfor %}
+            <button class='tweet-button' type="submit">Tweet</button>
+        </form>
+    </main>
+    <div class="right">
+        <h2>Followers</h2>
+        {% include "tweeter/partial/right.html" %}
+    </div>
+</div>
+{% endblock content %}
